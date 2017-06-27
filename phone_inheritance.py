@@ -1,39 +1,50 @@
+""" This is the phone inheritance file """
 class Phone:
-  def __init__(self, phone_number):
-    self.number = phone_number
-    
-  def call(self, other_number):
-    print("Calling {} from {}.".format(other_number, self.number))
-    
-  def text(self, other_number, msg):
-    print("Sending text from {} to {}:".format(self.number, other_number))
-    print(msg);
-    
+    """ This is the phone class """
+    def __init__(self, phone_number):
+        self.number = phone_number
+
+    def call(self, other_number):
+        """ This is the call function """
+        print("Calling {} from {}.".format(other_number, self.number))
+
+    def text(self, other_number, msg):
+        """ This is the text function """
+        print("Sending text from {} to {}:".format(self.number, other_number))
+        print(msg)
+
 class IPhone(Phone):
-  def __init__(self, phone_number):
-    super().__init__(phone_number)
-    self.fingerprint = None
-    
-  def set_fingerprint(self, fingerprint):
-    self.fingerprint = fingerprint
-    
-  def unlock(self, fingerprint=None):
-    if (self.fingerprint == None):
-      print("Phone unlocked because no fingerprint has not been set.")
-      
-    if (fingerprint == self.fingerprint):
-      print("Phone unlocked. Fingerprint matches.")
-    else:
-      print("Phone locked. Fingerprint doesn't match.")
-  
+    """ This is the iPhone class, a child of the Phone class """
+    def __init__(self, phone_number):
+        super().__init__(phone_number)
+        self.fingerprint = None
+
+    def set_fingerprint(self, fingerprint):
+        """ This is the fingerprint function """
+        self.fingerprint = fingerprint
+
+    def unlock(self, fingerprint=None):
+        """ This is the unlock function """
+        if self.fingerprint == None:
+            #This allows immediate unlock when fingerprint is None
+            print("Phone unlocked because no fingerprint has not been set.")
+
+        if fingerprint == self.fingerprint:
+            #This allows unlock to happen when fingerprint stored matches the entered fingerprint
+            print("Phone unlocked. Fingerprint matches.")
+        else:
+            print("Phone locked. Fingerprint doesn't match.")
+
 class Android(Phone):
-  def __init__(self, phone_number):
-    super().__init__(phone_number)
-    self.keyboard = "Default"
-    
-  def set_keyboard(self, keyboard):
-    self.keyboard = keyboard
-    
+    """ This is the Android class, a child of the Phone class """
+    def __init__(self, phone_number):
+        super().__init__(phone_number)
+        self.keyboard = "Default"
+
+    def set_keyboard(self, keyboard):
+        """ This is the set_keyboard function """
+        self.keyboard = keyboard
+
 moms_number = "888-3434"
 old_phone = Phone("555-1314")
 iphone = IPhone("555-0001")
